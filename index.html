@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="ui-mobile-rendering">
+<head>
+    <title>Casus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/jquery.mobile-1.0.1.min.css"/>
+
+    <!-- The Templates -->
+    <script type="text/template" id="home">  
+         <div data-role="header" data-theme="a" >
+            <h1 style="color:white">Casus</h1>
+                </div>
+
+       
+        <div data-role="content" style="color:black" data-theme="c">
+
+            <h1>Find Events</h1>
+            
+            <ul data-role="listview" id="choices" data-inset="true">
+                <li><a style="color:black" href="#newSearch">Search for an Event</a></li>
+                <li><a style="color:black" href="#savedEvents">View Saved Events</a></li>
+            </ul>
+            
+        </div>
+                   <div data-role="footer" data-position="bottom">
+	    <div data-role="navbar">
+		<ul>
+		    <li><a href="#" data-role="button" data-icon="home">Home</a></li>
+                    <li><a href="#savedEvents" data-role="button" data-icon="star">Saved Events</a></li>
+                    <li><a href="#" data-icon="info" data-role="notext" >About</a></li>
+                </ul>
+	    </div><!--Navbar-->
+	</div><!--Footer-->
+
+    </script>
+
+    <script type="text/template" id="newSearch">  
+        <div data-role="header" data-theme="a"><h1 style="color:white">Search for Events</h1></div>
+	
+        <div data-role="content">
+		<p>Enter both the area and type of event you're looking for.</p>
+			<input name= "location-search" id="location-search" data-icon="search" type="text" placeholder="Where are you located?">
+            <input name= "event-search" id="event-search" data-icon="search" type="text" placeholder="What type of event?">
+			<div>
+            <ul id="search-list" data-role="listview" data-inset="true" data-theme="c">
+              <% for(var i in results) { %>
+                <li><img src="<%= results[i].imgUrl %>"> <a href="#newList/<%= results[i].id%>"><%= results[i].title %> </a> </li>
+              <% } %> 
+			</div>
+            </ul>
+        </div>
+
+        <div data-role="footer" data-position="bottom" data-iconpos="right">
+		<div data-role="navbar">
+		<ul>
+		    <li><a href="#" data-icon="home">Home</a></li>
+            <li><a href="#savedEvents" data-role="button" data-icon="star">Saved Events</a></li>
+			<li><a href="#" data-role="button" data-icon="back" class="back ui-btn-left">Back</a></li>
+		</ul>
+			</div>
+        </div>
+    </script>
+        
+    <script type="text/template" id="newList">
+        <div data-role="header" data-theme="a">
+            <h1 style="color:white"> <%=recipe.title%> </h1>
+        </div>
+        <div data-role="content">
+          <img src= <%= recipe.imgUrl %> >
+         
+
+          <h3>Event Information</h3>
+            <ul id="ingr-list" data-role="listview" data-inset="true">
+              <% for(var i in recipe.ingrs) { %>
+                <li><%= recipe.ingrs[i] %></li>
+              <% } %>
+            </ul>
+        </div>            
+    
+          <input type="button" id="save-this" data-icon="check" value="Save to My Events">
+        <div data-role="footer" data-position="bottom" data-iconpos="right">
+		<div data-role="navbar">
+		<ul>
+		    <li><a href="#" data-icon="home">Home</a></li>
+            <li><a href="#savedEvents" data-role="button" data-icon="star">Saved Events</a></li>
+			<li><a href="#" data-role="button" data-icon="back" class="back ui-btn-left">Back</a></li>
+		</ul>
+			</div>
+        </div>
+    </script>
+
+    <script type="text/template" id="savedEvents">
+        <div data-role="header">
+            <h1>My Events</h1>
+        </div>
+
+        <div data-role="content">
+      
+            <h3>Saved Events:</h3>
+            <ul id="search-list" data-role="listview" data-inset="true">
+              <% for(var i in results) { %>
+                <li> <img src="<%= results[i].imgUrl %>"> <a href="#oldList/<%= results[i].id%>"><%= results[i].title %> </a> </li>
+              <% } %> 
+            </ul>
+           <a href="#deleteOld" data-role="button">Manage Saved Events</a>
+
+        </div>
+        
+        <div data-role="footer" data-position="bottom" data-iconpos="right">
+		<div data-role="navbar">
+		<ul>
+		    <li><a href="#" data-icon="home">Home</a></li>
+            <li><a href="#savedEvents" data-role="button" data-icon="star">Saved Events</a></li>
+			<li><a href="#" data-role="button" data-icon="back" class="back ui-btn-left">Back</a></li>
+		</ul>
+			</div>
+        </div>
+    </script>
+    
+    <script type="text/template" id="deleteOld">
+        <div data-role="header" data-theme="a">
+            <h1>Remove Events from Stored Events</h1>
+        </div>
+
+        <div data-role="content">
+            <h3>Select Events to Remove:</h3>
+            <ul data-role="listview" data-inset="true" id="recipe-list">
+
+            </ul>
+            <input type="button" data-icon="delete" value="Delete Selected Items" />
+        </div>
+        
+        <div data-role="footer" data-position="bottom" data-iconpos="right">
+		<div data-role="navbar">
+		<ul>
+		    <li><a href="#" data-icon="home">Home</a></li>
+            <li><a href="#savedEvents" data-role="button" data-icon="star">Saved Events</a></li>
+			<li><a href="#" data-role="button" data-icon="back" class="back ui-btn-left">Back</a></li>
+		</ul>
+			</div>
+        </div>
+    </script>
+    
+    
+    <script type="text/template" id="oldList">
+      <div data-role="header" data-theme="a">
+        <h1 style="color:white"> <%=recipe.title%> </h1>
+      </div>
+        
+      <div>
+        <div data-role="content">
+		      
+        </div>
+            
+      <div data-role="collapsible" data-collapsed="true" >
+        <h3>Venue</h3>
+        <ul id="ingr-list" data-role="listview" data-inset="true">
+
+        </ul>
+      </div>
+                
+        <div data-role="footer" data-position="bottom" data-iconpos="right">
+		<div data-role="navbar">
+		<ul>
+		    <li><a href="#" data-icon="home">Home</a></li>
+            <li><a href="#savedEvents" data-role="button" data-icon="star">Saved Events</a></li>
+			<li><a href="#" data-role="button" data-icon="back" class="back ui-btn-left">Back</a></li>
+		</ul>
+			</div>
+        </div>
+    </script>
+
+    
+    <!-- The Scripts -->
+    <script src="js/lib/jquery-1.7.1.min.js"></script>
+    <script src="js/jqm-config.js"></script>
+    <script src="js/lib/jquery.mobile-1.0.1.min.js"></script>
+    <script src="js/lib/underscore.js"></script>
+    <script src="js/lib/backbone-min.js"></script>    
+    <script src="js/lib/backbone.localStorage.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/main.js"></script>
+</head>
+
+<body></body>
+
+</html>
