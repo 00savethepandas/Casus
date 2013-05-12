@@ -4,11 +4,11 @@
     <title>Casus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/jquery.mobile-1.0.1.min.css"/>
-	 <link rel="stylesheet" href="main.css"/>
+	 <link rel="stylesheet" href="css/main.css"/>
 
     <!-- The Templates -->
     <script type="text/template" id="home">  
-         <div data-role="header" data-theme="a" >
+         <div data-role="header" data-theme="a">
             <h1 style="color:white">Casus</h1>
                 </div>
 
@@ -68,15 +68,16 @@
         <div data-role="content">    
 
           <h3>Event Information</h3>
-            <ul id="ingr-list" data-role="listview" data-inset="true">
             
-                <p style="padding: 10px"><%= Event.desc %></p>
-				<p><%= Event.venue %> </p>
-				<p><%= Event.addr %> </p>
-				<p><%= Event.city %>, <%= Event.state %>  <%= Event.zip %> </p>
+                <p><%= Event.desc %></p>
+				<p><strong> Venue: </strong><%= Event.venue %><br />
+				<strong> Street: </strong><%= Event.venueAddy %><br />
+				<strong> City, State: </strong><%= Event.city %>, <%= Event.state %>  <%= Event.zip %><br />
+				<p><strong>Website: </strong><a href="<%= Event.venueURL %>"><%= Event.venueURL %></a></p>
 				
-              
-            </ul>
+				<p><strong>Starts: </strong><%= Event.startTime %><br />
+				<p><strong>Ends: </strong><%= Event.endTime %><br /></p>
+				
         </div>            
     
           <input type="button" id="save-this" data-icon="check" value="Save to My Events">

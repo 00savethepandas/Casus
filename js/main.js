@@ -4,16 +4,7 @@ var Todo = Backbone.Model.extend({
       return {
 	id: 0,
 	title: 'defaultname',
-	/*imgUrl: 'defaultimageurl',
-        order: searchTemp.nextOrder(),
-        rating: 0,
-        timeToMake: '',
-        salty: 0,
-        sour: 0,
-        sweet: 0,
-        bitter: 0,	
-        isPerm: false,*/
-	desc: 'description', // ingrs: result[i].ingredients,
+	desc: 'description', 
 	addr: 'address',
 	startTime: 'start',
 	endTime: 'end',
@@ -23,9 +14,8 @@ var Todo = Backbone.Model.extend({
 	state: 'state',
 	zip: 'zip',
 	venueURL: 'venue_URL',
-	eventImg: 'eventImage',
-		
-	taggedForList: false
+	eventImg: 'eventImage',	
+	taggedForList: false,
       };
     },		
     initialize: function(){
