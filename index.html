@@ -147,19 +147,23 @@
     
     <script type="text/template" id="oldList">
       <div data-role="header" data-theme="a">
-        <h1 style="color:white"> <%=recipe.title%> </h1>
+        <h1 style="color:white"> <%=Event.title%> </h1>
       </div>
         
-      <div>
-        <div data-role="content">
-		      
+      <div data-role="content">		
+		
+          <h3>Event Information</h3>
+            
+                <p><%= Event.desc %></p>
+				<p><strong> Venue: </strong><%= Event.venue %><br />
+				<strong> Street: </strong><%= Event.venueAddy %><br />
+				<strong> City, State: </strong><%= Event.city %>, <%= Event.state %>  <%= Event.zip %><br />
+				<p><strong>Website: </strong><a href="<%= Event.venueURL %>" target="_blank"><%= Event.venueURL %></a></p>
+				
+				<p><strong>Starts: </strong><%= Event.startTime %><br />
+				<p><strong>Ends: </strong><%= Event.endTime %><br /></p>		      
         </div>
             
-      <div data-role="collapsible" data-collapsed="true" >
-        <h3>Venue</h3>
-        <ul id="ingr-list" data-role="listview" data-inset="true">
-
-        </ul>
       </div>
                 
         <div data-role="footer" data-position="bottom" data-iconpos="right">
