@@ -128,18 +128,15 @@
 
         <div data-role="content">
             <h3>Select Events to Remove:</h3>
-            <ul data-role="listview" data-inset="true" id="recipe-list">
+        
 
-			  <ul id="search-list" data-role="listview" data-inset="true">
+	    <ul id="search-list" data-role="listview" data-inset="true">
               <% for(var i in results) { %>
-              <li><%= results[i].title %></li>
+              <li style="padding: 10px" data-icon="false"><%= results[i].title %><a class="destroy"></a></li>
               <% } %> 
-            </ul>
-			
-			
-            </ul>
-            <input type="button" data-icon="delete" value="Delete Selected Items" />
-        </div>
+            </ul>			     
+	
+	</div>
         
         <div data-role="footer" data-position="bottom" data-iconpos="right">
 		<div data-role="navbar">
