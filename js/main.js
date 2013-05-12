@@ -13,6 +13,18 @@ var Todo = Backbone.Model.extend({
         sweet: 0,
         bitter: 0,	
         isPerm: false,*/
+	desc: 'description', // ingrs: result[i].ingredients,
+	addr: 'address',
+	startTime: 'start',
+	endTime: 'end',
+	venue: 'venue',
+	venueAddy: 'venuAddress',
+	city: 'city',
+	state: 'state',
+	zip: 'zip',
+	venueURL: 'venue_URL',
+	eventImg: 'eventImage',
+		
 	taggedForList: false
       };
     },		
@@ -35,6 +47,15 @@ var TodoList = Backbone.Collection.extend({
   initialize: function() {
   },
 
+  nextOrder: function() {
+  if (!this.length) return 1;
+  return this.last().get('order') + 1;
+  },
+  comparator: 'order',
+  taggedForList: function() {
+    return this.where({taggedForList: true});
+  },
+  
   taggedForList: function() {
     return this.where({taggedForList: true});
   },
@@ -166,7 +187,7 @@ window.newListView = Backbone.View.extend({
     initialize: function() {
     },
     render:function (eventName) {
-        recipe = this.model.toJSON();
+        Event = this.model.toJSON();
         $(this.el).html(this.template());
         return this;
     },
@@ -208,7 +229,7 @@ window.oldListView = Backbone.View.extend({
         //dont need to mess with searchTemp, it should be all set up by savedEventsView    
     },
     render: function (data) {
-        recipe = this.model.toJSON();
+        Event = this.model.toJSON();
         $(this.el).html(this.template());
         return this;
         //$(this.el).html(this.template(variables));
