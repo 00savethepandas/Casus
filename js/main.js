@@ -60,7 +60,7 @@ var TodoList = Backbone.Collection.extend({
     console.log("wipe() called, current state:");
     console.log(this.models);
   },
-  //
+  
   restore: function() {
     this.reset(this.fetch());
     console.log("collection restored, current state:");
@@ -108,8 +108,6 @@ var TodoList = Backbone.Collection.extend({
 		venueURL: result[i].venue_url,
 		eventImg: result[i].image,
         });
-
-
 	  searchTemp.add(anotherEvent);    //adds the model to the temporary     
 	});
       }  
@@ -224,21 +222,33 @@ window.oldListView = Backbone.View.extend({
         return this;
         //$(this.el).html(this.template(variables));
     },
-    events: {
-      "click #instructions":  "gotoInstructions"
-    },
+
     gotoInstructions: function() {
         //do this later
-    }
+    },
+
 });
 
 // WINDOW DELETE OLD VIEW
 window.deleteOldView =  Backbone.View.extend({
-    template:_.template($('#deleteOld').html()), 
+    template:_.template($('#deleteOld').html()),    
+    initialize: function() {
+	searchTemp.fetch();
+        //this.listenTo(this.model, 'destroy', this.remove);
+        //dont need to mess with searchTemp, it should be all set up by savedEventsView    
+    },
+    events: {
+        "click a.destroy" : "clear",
+    },
+        // Remove the item, destroy the model.
     render: function (eventName) {
         $(this.el).html(this.template());
         return this;
-    }
+    },
+    
+    clear: function() {
+      this.model.destroy();
+    },
 });
 
 // APP ROUTER    
