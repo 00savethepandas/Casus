@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html class="ui-mobile-rendering">
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/jquery.mobile-1.0.1.min.css"/>
+
+    <!-- The Templates -->
+    <script type="text/template" id="home">
+
+        <div data-role="header">
+            <h1>CASUS</h1>
+        </div>
+
+        <div data-role="content" id="a">
+        <p>FIND AN EVENT<p>
+         <form id 'search' method="post" action="">
+        
+      <input type="text" name="event" placeholder = "Enter an Event" id="event">
+      <input type="text" name="location" placeholder = "Enter an location" id="location">
+      </form>
+       <button id="submit">Enter</button>
+        
+        <div id="eventinfo" data-role="content">
+	    <ul data-role="listview">
+	    </ul>
+	  </div>
+          
+        </div>
+        
+        
+       <! <a href="#" button id="submit"> <!Enter <!</a>
+       <! <div data-role="content">
+		<!	<div id="eventinfo"><!</div>
+		<!</div>
+        
+         
+        </div>
+ <div data-role="footer" data-position="bottom" data-iconpos="right">
+	    <div data-role="navbar">
+		<ul>
+		    <li><a href="#" data-role="button" data-icon="home">Home</a></li>
+                    <li><a href="#page1" onclick="loadFavs()" data-role="button" data-icon="star">Favorites</a></li>
+                    <li><a href="#page2" data-icon="info" data-role="notext" >About</a></li>
+
+                </ul>
+	    </div><!--Navbar-->
+	</div><!--Footer-->       
+         
+        
+
+    </script>
+
+    <script type="text/template" id="page1">
+
+        <div data-role="header" data-position="fixed">
+            <a  data-icon="refresh" data-iconpos="right" onclick="loadFavs()">Update List</a>
+            <h1>Favorites</h1>
+            <a  data-icon="alert" data-iconpos="left" onclick="clearFavs()">Clear</a>
+        </div>
+
+            <p>Event</p>
+     <<div id="favorite" data-role="content" type="checkbox">
+	    <ul data-role="listview">
+	    </ul>
+	</div>
+
+           <div data-role="footer" data-position="bottom">
+	    <div data-role="navbar">
+		<ul>
+		    <li><a href="#" data-role="button" data-icon="home">Home</a></li>
+                    <li><a href="#page1" data-role="button" data-icon="star">Favorites</a></li>
+                    <li><a href="#page2" data-icon="info" data-role="notext" >About</a></li>
+                </ul>
+	    </div><!--Navbar-->
+	</div><!--Footer-->
+       <footer>
+  <p>Posted by: Brian Chin , Jen Soh</p>
+  <p><time pubdate datetime="2012-03-01"></time></p>
+</footer>
+       
+        </div>
+        
+
+    </script>
+    
+    
+
+    <script type="text/template" id="page2">
+
+        <div data-role="header">
+            <a href="#" data-icon="back" class="back ui-btn-left">Back</a>
+            <h1>about</h1>
+        </div>
+
+        <div data-role="content">
+            <p>By Brian Chin and Jen Soh </p>
+            
+        </div>
+<div data-role="footer" data-position="bottom">
+	    <div data-role="navbar">
+		<ul>
+		    <li><a href="#" data-role="button" data-icon="home">Home</a></li>
+                    <li><a href="#page1" data-role="button" data-icon="star">Favorites</a></li>
+                    <li><a href="#page2" data-icon="info" data-role="notext" >About</a></li>
+                </ul>
+	    </div><!--Navbar-->
+	</div><!--Footer-->
+
+
+    </script>
+    
+    
+     <script type="text/template" id="page3">
+        <div data-role="header" data-position="fixed">
+	    <a onclick="addFavs()" data-role="button" data-icon="star">AddToFavorites</a>
+            <a href="#" data-icon="delete" onclick="getModels()" class="back ui-btn-right" data-iconpos="notext">Close</a>
+            <h1>Event List</h1>
+        </div>
+
+
+            <p>EventINFO</p>
+            <div id="eventlist" data-role="content">
+	    
+	  </div>
+
+            
+            
+      <div data-role="footer" data-position="bottom">
+	    <div data-role="navbar">
+		<ul>
+		    <li><a href="#" data-role="button" data-icon="home">Home</a></li>
+                    <li><a href="#page1" data-role="button" data-icon="star">Favorites</a></li>
+                    <li><a href="#page2" data-icon="info" data-role="notext" >About</a></li>
+                </ul>
+	    </div><!--Navbar-->
+	</div><!--Footer-->
+
+        
+
+    </script>
+    
+    
+    
+
+    <!-- The Scripts -->
+    <script src="lib/jquery-1.7.1.min.js"></script>
+    <script src="js/jqm-config.js"></script>
+    <script src="lib/jquery.mobile-1.0.1.min.js"></script>
+    <script src="lib/underscore-min.js"></script>
+    <script src="lib/backbone-min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/event.js"></script>
+</head>
+
+<body></body>
+
+</html>
