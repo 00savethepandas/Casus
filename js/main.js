@@ -161,12 +161,14 @@ window.newSearchView = Backbone.View.extend({
       "keypress #event-search":  "searchOnEnter",
       //add a listener to newSearch to change what's displayed on this list
     },
-    searchOnEnter: function(e) {   //the search bar's functionality
-      if (e.keyCode != 13) return;
-	  var sLocation = $("input[id='location-search']").val();
-      var searching = $("input[id='event-search']").val();
-	  searchTemp.findEvents(searching, sLocation); // findRecipes
-    }
+    
+    searchOnEnter: function() {   //the search bar's functionality
+      $('#submit').click(function(){
+	var sLocation = $("input[id='location-search']").val();
+	var searching = $("input[id='event-search']").val();
+	searchTemp.findEvents(searching, sLocation); // findRecipes
+	});
+    },
 });
 
 // NEW WINDOW.NEW LIST VIEW

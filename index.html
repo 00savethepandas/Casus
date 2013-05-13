@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html class="ui-mobile-rendering">
+<html class="ui-mobile-rendering" onload="init()">
 <head>
     <title>Casus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/jquery.mobile-1.0.1.min.css"/>
 	 <link rel="stylesheet" href="css/main.css"/>
+    <script src="cordova-2.7.0.js"></script>
 
     <!-- The Templates -->
     <script type="text/template" id="home">  
@@ -41,6 +42,7 @@
 		<p>Enter both the area and type of event you're looking for.</p>
 			<input name= "location-search" id="location-search" data-icon="search" type="text" placeholder="Where are you located?">
             <input name= "event-search" id="event-search" data-icon="search" type="text" placeholder="What type of event?">
+	    <button id="submit">Submit</button>
 			<div>
             <ul id="search-list" data-role="listview" data-inset="true" data-theme="c">
               <% for(var i in results) { %>
